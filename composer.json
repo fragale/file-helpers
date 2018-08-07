@@ -1,0 +1,13 @@
+{
+    "name": "fragale/file-helpers",
+    "description": "File managements and helpers",
+    "type": "helpers",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maximiliano Fragale",
+            "email": "fragale@gmail.com"
+        }
+    ],
+    "require": {}
+}
