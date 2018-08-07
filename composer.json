@@ -9,5 +9,8 @@
             "email": "fragale@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+     "psr-4": {"Fragale\\FileHelpers\\Helpers\\": "fragale/file-helpers/src/Helpers"}
+   }
 }
