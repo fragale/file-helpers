@@ -1,6 +1,6 @@
 <?php
 
-namespace Fragale\FileHelpers\Helpers;
+namespace Fragale\FileHelpers;
 
 //use Illuminate\Filesystem\Filesystem as File;
 
