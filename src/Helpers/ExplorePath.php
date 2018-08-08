@@ -2,7 +2,6 @@
 
 namespace Fragale\FileHelpers;
 
-//use Illuminate\Filesystem\Filesystem as File;
 
 class ExplorePath
 {
