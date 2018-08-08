@@ -11,11 +11,14 @@ class ExplorePath
   /**
    * Create a new instance.
    *
-   * @return void
+   * @return mixed
    */
-  public function __construct()
+  public function __construct($path='');
   {
     $this->fileBuffer=[];
+    if ($path){
+      return $this->explore($path);
+    }
   }
 
 

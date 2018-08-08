@@ -7,7 +7,7 @@ use Fragale\FileHelpers\ExplorePath;
 class ReplicatePath
 {
 
-  protected $fileBuffer;
+  protected $fileConflictBuffer;
 
   /**
    * Create a new instance.
@@ -16,9 +16,21 @@ class ReplicatePath
    */
   public function __construct()
   {
-    $this->fileBuffer=[];
+
   }
 
+
+  /**
+   * Duplicate a path structure
+   *
+   * @return boolean
+   */
+  public function replicate($sourcePath, $targetPath)
+  {
+    $source=new ExplorePath($sourcePath);
+    $target=new ExplorePath($targetPath);
+
+  }
 
 
 }
