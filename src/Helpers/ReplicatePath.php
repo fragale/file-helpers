@@ -69,7 +69,7 @@ class ReplicatePath
 
     /*busca cuales son los archivos en target que se no se encuentran en source*/
     foreach ($this->target as $key => $fileInfo) {
-      if(array_search($fileInfo['path'], array_column($this->source, 'path'))){
+      if(!array_search($fileInfo['path'], array_column($this->source, 'path'))){
         $this->notExistsInSource[]=$fileInfo['path'];
       }
     }
