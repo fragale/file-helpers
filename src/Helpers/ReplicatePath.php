@@ -84,7 +84,7 @@ class ReplicatePath
   public function checkIfExists($path)
   {
 
-    if (file_exists($path)){
+    if (!file_exists($path)){
       $this->hasConflicts=true;
       $this->conflictBuffer[]="Path $path doesn't exists!";
     }
