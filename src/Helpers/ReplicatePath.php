@@ -36,8 +36,8 @@ class ReplicatePath
     $this->checkIfExists($targetPath);
 
     if (!$this->hasConflicts) {
-      $s=new ExplorePath($sourcePath);
-      $t=new ExplorePath($targetPath);
+      $s=new ExplorePath();
+      $t=new ExplorePath();
 
       $this->source=$s->explore($sourcePath);
       $this->target=$t->explore($targetPath);
@@ -47,7 +47,7 @@ class ReplicatePath
 
     $this->makeOutputBuffer();
 
-    return !$this->hasConflicts;
+    return ($this->hasConflicts) ? false : true;
 
   }
 
@@ -89,7 +89,7 @@ class ReplicatePath
       $this->conflictBuffer[]="Path $path doesn't exists!";
     }
 
-    return !$this->hasConflicts;
+    return ($this->hasConflicts) ? false : true;
 
   }
 

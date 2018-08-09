@@ -6,7 +6,7 @@ namespace Fragale\FileHelpers;
 class ExplorePath
 {
 
-  protected $fileBuffer;
+  public $fileBuffer;
 
   /**
    * Create a new instance.
@@ -16,6 +16,7 @@ class ExplorePath
   public function __construct($path='')
   {
     $this->fileBuffer=[];
+    $this->root='';
     if ($path){
       return $this->explore($path);
     }
@@ -29,7 +30,7 @@ class ExplorePath
    */
   public function explore($path)
   {
-
+    $this->root=$path;
     if($this->isDir($path)){
       $this->read($path);
     } else {
@@ -70,7 +71,8 @@ class ExplorePath
    */
   public function addToBuffer($path)
   {
-    $this->fileBuffer[]=['path' => $path,'type' => $this->fileType($path)];
+    $basePath=str_replace($this->root,'',$path);
+    $this->fileBuffer[]=['root' => $this->root,'path' => $basePath, 'full_path' => $path, 'type' => $this->fileType($path)];
   }
 
 
