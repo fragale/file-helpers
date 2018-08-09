@@ -71,8 +71,10 @@ class ExplorePath
    */
   public function addToBuffer($path)
   {
-    $basePath=str_replace($this->root,'',$path);
-    $this->fileBuffer[]=['root' => $this->root,'path' => $basePath, 'full_path' => $path, 'type' => $this->fileType($path)];
+    $basePath=str_replace($this->root.'/','',$path);
+    if(trim($basePath)){
+      $this->fileBuffer[]=['root' => $this->root,'path' => $basePath, 'full_path' => $path, 'type' => $this->fileType($path)];
+    }
   }
 
 
@@ -108,6 +110,5 @@ class ExplorePath
   {
     return ($this->isDir($file)) ? 'd' : 'f';
   }
-
 
 }

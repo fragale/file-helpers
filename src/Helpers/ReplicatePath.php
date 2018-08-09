@@ -21,6 +21,8 @@ class ReplicatePath
     $this->alreadyExistsInTarget=[];
     $this->conflictBuffer=[];
     $this->outputBuffer=[];
+    $this->source_root='';
+    $this->target_root='';
   }
 
 
@@ -34,6 +36,9 @@ class ReplicatePath
 
     $this->checkIfExists($sourcePath);
     $this->checkIfExists($targetPath);
+
+    $this->source_root=$sourcePath;
+    $this->target_root=$targetPath;
 
     if (!$this->hasConflicts) {
       $s=new ExplorePath();
@@ -125,6 +130,45 @@ class ReplicatePath
 
     return $this->outputBuffer;
 
+  }
+
+
+
+  /**
+   * Copy source into target
+   * @replace indicates if replace an existing file in target
+   *
+   * @return boolean
+   */
+  public function copy($replace=false)
+  {
+
+    /*loop the source files*/
+    foreach ($this->source as $key => $fileInfo) {
+
+      $destination=$this->target_root.$fileInfo['path'];
+
+      switch ($fileInfo['type']) {
+        /*directory*/
+        case 'd':
+              /*if folder doesn't exists, create it*/
+              if (!file_exists($destination)){
+                mkdir($destination, 0777, true);
+              }
+          break;
+
+        /*regular file*/
+        case 'f':
+            /*if file exists and is in replace mode, first delete old file*/
+            if (file_exists($destination) and $replace){
+              unlink($destination);
+            }
+            copy($fileInfo['full_path'], $destination);
+          break;
+      }
+    }
+
+    return true;
   }
 
 
