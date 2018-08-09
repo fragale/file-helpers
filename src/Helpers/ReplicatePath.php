@@ -20,7 +20,7 @@ class ReplicatePath
     $this->notExistsInSource=[];
     $this->alreadyExistsInTarget=[];
     $this->conflictBuffer=[];
-
+    $this->outputBuffer=[];
   }
 
 
