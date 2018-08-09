@@ -13,7 +13,7 @@ class ExplorePath
    *
    * @return mixed
    */
-  public function __construct($path='');
+  public function __construct($path='')
   {
     $this->fileBuffer=[];
     if ($path){
