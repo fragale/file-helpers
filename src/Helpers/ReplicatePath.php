@@ -140,7 +140,7 @@ class ReplicatePath
    *
    * @return boolean
    */
-  public function copy($replace=false)
+  public function copy($replace=false,$debug=false)
   {
 
     /*loop the source files*/
@@ -153,6 +153,7 @@ class ReplicatePath
         case 'd':
               /*if folder doesn't exists, create it*/
               if (!file_exists($destination)){
+                if ($debug){echo "creando directorio $destination<br>";}
                 mkdir($destination, 0777, true);
               }
           break;
@@ -163,6 +164,7 @@ class ReplicatePath
             if (file_exists($destination) and $replace){
               unlink($destination);
             }
+            if ($debug){echo "copiando ".$fileInfo['full_path']." destino: $destination<br>";}
             copy($fileInfo['full_path'], $destination);
           break;
       }
