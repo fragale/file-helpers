@@ -50,7 +50,9 @@ class ExplorePath
    */
   public function read($path)
   {
-    $this->addToBuffer($path);
+    if($path!=$this->root){
+      $this->addToBuffer($path);
+    }
 
     $resource = opendir($path);
     while (false !== ($fileName = readdir($resource))) {

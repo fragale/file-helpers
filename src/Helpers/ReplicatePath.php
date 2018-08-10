@@ -146,7 +146,7 @@ class ReplicatePath
     /*loop the source files*/
     foreach ($this->source as $key => $fileInfo) {
 
-      $destination=$this->target_root.$fileInfo['path'];
+      $destination=$this->target_root.'/'.$fileInfo['path'];
 
       switch ($fileInfo['type']) {
         /*directory*/
