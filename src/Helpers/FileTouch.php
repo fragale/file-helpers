@@ -98,7 +98,22 @@ class FileTouch
 
   }
 
+  /**
+   * replace in file a pattern that'll be sustituted whit values informed
+   * in a array ['pattern' = 'value']
+   *
+   * @return boolean
+   */
+  public function replaceInFile($patterns,$filename)
+  {
+    $content=$this->getContent($filename);
 
+    foreach ($patterns as $pattern => $sustitute) {
+      $content = str_replace($pattern, $sustitute, $content);
+    }
 
+    return $this->putContent($content,$filename);
+
+  }
 
 }
