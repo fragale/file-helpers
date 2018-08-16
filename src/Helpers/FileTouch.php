@@ -116,4 +116,30 @@ class FileTouch
 
   }
 
+  /**
+   * rename files using a pattern for change the filename
+   *
+   * @return boolean
+   */
+  public function renameFiles($targetPath,$pattern, $sustitute)
+  {
+    $t=new ExplorePath();
+    $target=$t->explore($targetPath);
+    $hasChanges=false;
+
+    foreach ($target as $key => $fileInfo) {
+      if($fileInfo['type']=='f'){
+        $path = pathinfo($fileInfo['full_path']);
+        $filename = $path['dirname'].'/'.str_replace($pattern, $sustitute, $path['basename']);
+        if ($fileInfo['full_path']<>$filename){
+          //echo "-->".$fileInfo['full_path']."--> $filename \n";
+          $hasChanges=rename($fileInfo['full_path'],$filename);
+        }
+      }
+    }
+
+    return $hasChanges;
+  }
+
+
 }
