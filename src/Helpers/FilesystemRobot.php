@@ -123,6 +123,7 @@ class FilesystemRobot
         /*si el file existe y hay que reemplazarlo*/
         if (file_exists($target) and $replace){
           try {
+            //echo "borrando $target \n";
             unlink($target);
           } catch (\Exception $e) {
             echo 'Error: '.$e->getMessage()."\n";
@@ -132,6 +133,7 @@ class FilesystemRobot
         /*intenta hacer la copia*/
         try {
           if (!file_exists($target)){
+            //echo "copiando $source en $target \n";
             copy($source, $target);
             return true;
           } else {
